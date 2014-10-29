@@ -45,15 +45,65 @@ require('bd.php');
         <div style="background:#FFF; float:left; width:760px; min-height:970px;">
         	<!-- Banner -->
         	<div style="padding:20px;">
+        	<table style="width:100%">
+        	 <tbody>
            		<?php
-				$consulta = "SELECT * FROM usuarios WHERE tipoUsuario = 3 AND banner2 != '' ORDER BY id DESC";	
+				$consulta = "SELECT * FROM usuarios WHERE tipoUsuario = 3 AND banner1 != '' ORDER BY id DESC";	
 				$resultado = mysql_query($consulta, $conexion);	
-				$num_banners = mysql_num_rows($resultado);			
+				$num_banners = mysql_num_rows($resultado);		
+
+				echo "<tr> <td colspan='2'> <h2> {$num_banners}  Inmobiliarias encontradas.</h2> <br/><br/></td></tr>";
+
 				while ($registro = mysql_fetch_array($resultado))
 				{
 
+					if(empty($registro['banner1']))
+						continue;
+
+					$img = $registro['banner1'] ;
+					$dir = empty($registro['direccion']) ? '' : "<b>Dirección:</b> {$registro['direccion']}";
+					$url = empty($registro['url']) || $registro['url'] === '#' ? '' : "<a href='{$registro['url']}' target='_blank'>Sitio web</a>";
+
 					
-					?><div class="recuadroAzul" style="margin-bottom:20px" align="center"><a href="/propiedades_.php?inm=<?php echo $registro['identificacion']?>" ><img src="bannerInmobiliariaConstructora/<?php echo $registro['banner2']?>" width="550" height="100" title="Visitar Inmobiliaria" /></a></div>
+					?><tr style="padding:15px 0; border-top:1px solid #ccc">
+					<td style="width:70%">
+					 			<h3 style="color:#0089CE; padding:0; font-weight:bold; height:auto; margin:0"><a href="/propiedades_.php?inm=<?php echo $registro['identificacion']?>" ><?php echo $registro["nombreEmpresa"] ?></a></h3>
+					 			<br/>
+					 			<p style="font-size:14px; padding:0; margin:0">
+					 			 <?php 
+
+
+
+					 			       echo "{$dir}<br /> 
+					 			 			 <b>Teléfono:</b> {$registro['telefono']} <br /> 
+					 			             <b>Celular:</b> {$registro['celular']} <br />
+					 			             {$url}
+					 			             " 
+					 			          ?>
+					 			</p>
+			
+					</td>
+					<td>
+					 <table style="width:100%">
+					 	<tbody>					 	
+					 		<tr>
+					 			<td>
+					 					<a  style="float:right; display:block" href="/propiedades_.php?inm=<?php echo $registro['identificacion']?>" >
+					<img src="/pic.php?i=/bannerInmobiliariaConstructora/<?php echo "{$img}&width=100&make=show";?> " width="100"  title="Visitar Inmobiliaria" />
+					</a>					 			
+					 			</td>
+					 		</tr>
+					 		<tr>
+					 			<td>
+					 				<a class="boton-cool" style="float:right; display:block; font-size:12px" href="/propiedades_.php?inm=<?php echo $registro['identificacion']?>" >Ver Inmuebles</a>
+					 			</td>
+					 		</tr>
+					 	</tbody>
+					 </table>
+					<td>
+					
+					</tr>
+					<tr><td colspan="2"><hr /></td></tr>
                     <?php
 
 				}
@@ -65,38 +115,10 @@ require('bd.php');
               <?php
 				}
 				?>
+				 </tbody>
+				</table>
             </div>
-
-            <!-- Logos -->
-            <div style="">
-            	<?php
-				$consulta = "SELECT * FROM usuarios WHERE tipoUsuario = 3 AND banner1 != '' ORDER BY id DESC";	
-				$resultado = mysql_query($consulta, $conexion);	
-				$num_banners = mysql_num_rows($resultado);			
-				while ($registro = mysql_fetch_array($resultado))
-				{
-					if($registro['url'] != ''){
-					?>
-            		<div style="float:left; padding:20px;"><a href="/propiedades_.php?inm=<?php echo $registro['identificacion']?>" ><img style="cursor:pointer"  src="bannerInmobiliariaConstructora/<?php echo $registro['banner1']?>" width="150" height="150" border ="0" /></a></div>
-                	<?php
-					}
-					else
-					{
-					?>
-                    <div style="float:left; padding:20px;"><a href="/propiedades_.php?inm=<?php echo $registro['identificacion']?>" ><img  style="cursor:pointer"  src="bannerInmobiliariaConstructora/<?php echo $registro['banner1']?>" width="150" height="150" border ="0" /></a></div>
-                    <?php	
-					}
-				}
-				
-				for($i=$num_banners; $i<9; $i++)
-				{
-				?>
-                <div style="float:left; padding:20px;"><a href="#"><img src="imagenes/logocons4.png" width="150" height="150" border ="0" /></a></div>
-                <?php
-				}
-				?>
-                
-          </div>
+            
             <div style="clear:left"></div>
         </div>
         </form>
