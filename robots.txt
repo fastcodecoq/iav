@@ -1,0 +1,203 @@
+User-Agent: Googlebot
+
+Disallow: /masdetallesbodega.php
+Disallow: /menu.php
+Disallow: /pie.php
+Disallow: /planesRenovacion.php
+Disallow: /planesVenta.php
+Disallow: /inmuebledelete.php
+Disallow: /manualIA.pdf
+Disallow: /manualIAV.pdf
+Disallow: /masdatoscasa.php
+Disallow: /masdatosconsul.php
+Disallow: /masdatosfinca.php
+Disallow: /masdatoslocal.php
+Disallow: /masdatoslote.php
+Disallow: /masdatosofici.php
+Disallow: /form_recomendar_email.php
+Disallow: /form_enviar_registro.php
+Disallow: /form_enviar_contacto.php
+Disallow: /filtros.php
+Disallow: /editarInmuebleFotos.php
+Disallow: /editarInmueble.php
+Disallow: /datosOficinaEdit.php
+Disallow: /datosOficina.php
+Disallow: /datosLoteEdit.php
+Disallow: /datosLote.php
+Disallow: /datosLocalEdit.php
+Disallow: /datosLocal.php
+Disallow: /datosFincaEdit.php
+Disallow: /datosFinca.php
+Disallow: /datosConsultorioEdit.php
+Disallow: /datosConsultorio.php
+Disallow: /datosCasaEdit.php
+Disallow: /datosCasa.php
+Disallow: /datosBodegaEdit.php
+Disallow: /datosBodega.php
+Disallow: /datosApartamentoEdit.php
+Disallow: /cuenta.php
+Disallow: /crearInmueble.php
+Disallow: /creaCampos.php
+Disallow: /controlSesion.php
+Disallow: /contrasena_edit.php
+Disallow: /contacto.php
+Disallow: /consultarUsuario.php
+Disallow: /confirmacion.php
+Disallow: /cabezote.php
+Disallow: /buscarMapa.php
+Disallow: /buscarConstructora.php
+Disallow: /buscador.php
+Disallow: /boceto.php
+Disallow: /autenticacion.php
+Disallow: /actualizarInmuebleRenovacion.php
+Disallow: /actualizarInmueblenuevo.php
+Disallow: /actualizarInmueble.php
+Disallow: /planPersonalizado.php
+Disallow: /posts.php
+Disallow: /process.php
+Disallow: /propiedades_old.php
+Disallow: /prueba.php
+Disallow: /pruebaPago.php
+Disallow: /recomendarInmueble.php
+Disallow: /recordarClave.php
+Disallow: /redimencionar.php
+Disallow: /registroInmueble.php
+Disallow: /registroInmueblesFotos.php
+Disallow: /registroInmueblesFotos1.php
+Disallow: /registroInmueblesUbicacion.php
+Disallow: /renovarInmueble.php
+Disallow: /renovarInmuebleFotos.php
+Disallow: /restablacer.php
+Disallow: /recordarClave.php
+ Disallow: /faq.php
+Disallow: /terminosycondiciones.pdf
+Disallow: /manualIAV.pdf
+Disallow: /recomendarInmueble.php?codigo=\
+Disallow: /banner/
+Disallow: /cache/
+Disallow: /bannerInmobiliariaConstructora/
+User-agent: sitebot
+Disallow: /
+
+User-agent: Slurp
+Disallow: /
+
+User-agent: CazoodleBot
+Disallow: /
+
+User-agent: sistrix
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: UbiCrawler
+Disallow: /
+
+User-agent: DOC
+Disallow: /
+
+User-agent: Zao
+Disallow: /
+
+User-agent: sitecheck.internetseer.com
+Disallow: /
+
+User-agent: Zealbot
+Disallow: /
+
+User-agent: MSIECrawler
+Disallow: /
+
+User-agent: SiteSnagger
+Disallow: /
+
+User-agent: WebStripper
+Disallow: /
+
+User-agent: WebCopier
+Disallow: /
+
+User-agent: Fetch
+Disallow: /
+
+User-agent: Offline Explorer
+Disallow: /
+
+User-agent: Teleport
+Disallow: /
+
+User-agent: TeleportPro
+Disallow: /
+
+User-agent: WebZIP
+Disallow: /
+
+User-agent: linko
+Disallow: /
+
+User-agent: HTTrack
+Disallow: /
+
+User-agent: Microsoft.URL.Control
+Disallow: /
+
+User-agent: Xenu
+Disallow: /
+
+User-agent: larbin
+Disallow: /
+
+User-agent: libwww
+Disallow: /
+
+User-agent: ZyBORG
+Disallow: /
+
+User-agent: Download Ninja
+Disallow: /
+
+User-agent: wget
+Disallow: /
+
+User-agent: grub-client
+Disallow: /
+
+User-agent: k2spider
+Disallow: /
+
+User-agent: NPBot
+Disallow: /
+
+User-agent: WebReaper
+Disallow: /
+
+User-agent: psbot
+Disallow: /
+
+User-agent: Exabot
+Disallow: /
+
+User-agent: Speedy
+Disallow: /
+
+User-agent: dotbot
+Disallow: /
+
+User-agent: Bloglines/3.1
+Disallow: /
+
+User-agent: Jyxobot/1
+Disallow: /
+
+User-agent: cityreview
+Disallow: /
+
+User-agent: WijuBot
+Disallow: /
+
+Sitemap: http://www.inmueblealaventa.com/sitemap.xml
+
+
+
+

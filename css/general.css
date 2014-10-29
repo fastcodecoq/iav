@@ -1,0 +1,355 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700);
+
+@font-face {
+    font-family: 'myriad_web_pro_condensedRg';
+    src: url('../fonts/myriadwebpro-condensed-webfont.eot');
+    src: url('../fonts/myriadwebpro-condensed-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/myriadwebpro-condensed-webfont.woff') format('woff'),
+         url('../fonts/myriadwebpro-condensed-webfont.ttf') format('truetype'),
+         url('../fonts/myriadwebpro-condensed-webfont.svg#myriad_web_pro_condensedRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.input_redondo {
+	width:100%;
+    padding: 3px 10px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #333;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+
+    background-image: -ms-linear-gradient(top, white, #E6E6E6);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(white), to(#E6E6E6));
+    background-image: -webkit-linear-gradient(top, white, #E6E6E6);
+    background-image: -o-linear-gradient(top, white, #E6E6E6);
+    background-image: linear-gradient(top, white, #E6E6E6);
+    background-image: -moz-linear-gradient(top, white, #E6E6E6);
+    background-repeat: repeat-x;
+    border: 1px solid #ccc;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    border-color: #E6E6E6 #E6E6E6 #BFBFBF;
+    border-bottom-color: #B3B3B3;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+input.placeholder{
+  color: #cccccc;
+}
+
+body {
+	/*background:url(../imagenes/fondo.jpg) repeat;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family:Tahoma, Geneva, sans-serif;*/
+	background:#E5E6E7;
+	font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    color:#656565;
+	margin:auto;	
+}
+
+h1{
+	color: #346599;
+    font-size: 23px;
+}
+
+ol, ul { 
+    list-style: none; 
+}
+
+
+.layout-slider { margin-bottom: 60px; width: 200px; float:left }
+
+.contenedor{
+	width:1000px;
+	margin:auto; /*10px arriba y abajo, y auto a los lados, para los navegadores nuevos es suficiente para centrar la pagina*/
+}
+
+.textoFiltros{
+	font-family:"myriad_web_pro_condensedRg";
+	color:#5B5443;
+	font-size:16px;
+	padding:10px 0;
+}
+
+/* MENU SUPERIOR */
+.barraMenu{
+	background-color:#0089CE;
+	background:url(../imagenes/barraMenu.png) repeat-x;
+	width:100%;
+	height:52px;
+	clear:left;
+}
+
+.cssmenu{
+	border:none;
+	border:0px;
+	margin:0px;
+	padding:0px;
+	/*font-family: 'myriad_web_pro_condensedRg';*/
+	font-size:16px;
+	font-weight:bold;
+}
+.cssmenu ul{
+	/*background:#333333;*/
+	height:31px;
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+.cssmenu li{
+	float:left;
+	padding:4px 0px 0px 0px;
+}
+.cssmenu li a{
+	/*background:#333333 url('images/seperator.gif') bottom right no-repeat;*/
+	color:#fff;
+	display:block;
+	font-weight:bold;
+	line-height:31px;
+	margin:0px;
+	padding:0px 20px;
+	text-align:center;
+	text-decoration:none;
+}
+.cssmenu li a:hover, .cssmenu ul li:hover a{
+	/*background: #012907 url('images/hover.gif') bottom center no-repeat;*/
+	color:#FBCB65;
+	text-decoration:none;
+}
+.cssmenu li ul{
+	background:#346599;
+	display:none;
+	height:auto;
+	padding:0px;
+	margin:0px;
+	border:0px;
+	position:absolute;
+	width:225px;
+	z-index:200;
+	/*top:1em;
+	/*left:0;*/
+}
+.cssmenu li:hover ul{
+	display:block;	
+}
+.cssmenu li li {
+	/*background:url('images/sub_sep.gif') bottom left no-repeat;*/
+	display:block;
+	float:none;
+	margin:0px;
+	padding:0px;
+	width:225px;
+}
+.cssmenu li:hover li a{
+	background:none;
+}
+.cssmenu li ul a{
+	display:block;
+	height:20px;
+	line-height:20px;
+	font-size:13px;
+	font-style:normal;
+	margin:0px;
+	padding:5px 10px 5px 15px;
+	text-align:left;
+}
+.cssmenu li ul a:hover, .cssmenu li ul li:hover a{
+	/*background:#004E24 url('images/hover_sub.gif') center left no-repeat;*/
+	background:#1A91CD;
+	border:0px;
+	color:#ffffff;
+	text-decoration:none;
+	}
+.cssmenu p{
+	clear:left;
+	}	
+
+/* MENU SUPERIOR */
+
+
+#barra_menu{
+	background:url(../imagenes/bg_menu.png) repeat-x;
+	height:50px;
+}
+
+
+/* -------------------------------------------------------- Pie de pagina --------------------------------------------------------*/
+.pie_pagina{
+	width:100%;
+	/*height:350px;*/
+	/*background: #336498;*/
+	color:#FFF;
+	position:relative;
+	z-index:4;
+	clear:both;
+	
+}
+
+.pie_pagina .menu{
+	float:left;
+	padding:0px 20px 0px 0px;
+}
+
+.pie_pagina .menu ul{
+	font-size:12px;
+	list-style:none;
+	line-height:15px;
+	font-weight:bold;
+	margin-left:-40px;
+}
+
+.pie_pagina .menu li{
+	font-size:12px;
+}
+
+.pie_pagina .menu li a{
+	/*background:#333333 url('images/seperator.gif') bottom right no-repeat;*/
+	color:#FFF;
+	display:block;
+	font-weight:normal;
+	/*line-height:50px;*/
+	margin:0px;
+	text-decoration:none;
+}
+	
+.pie_pagina .menu li a:hover, .pie_pagina .menu ul li:hover a{
+	color:#FBCB65;
+	text-decoration:none;
+	}
+	
+/* Fin pie de pagina */
+
+/*Redes Sociales*/
+
+.socialMenu{
+	border:none;
+	border:0;
+	margin:5px;
+	padding:80px 0 0 65px;	
+}
+
+.socialMenu ul{
+	/*background:#333333;*/
+	height:31px;
+	list-style:none;
+	margin:0;
+	padding:0px;
+}
+
+.socialMenu li{
+	float:left;
+	padding:6px;
+}
+
+.socialMenu li a:hover{
+	margin-top:5px;
+	opacity:.7;
+}
+
+/* Recuadro Azul con fondo Blanco*/
+.recuadroAzul{
+	background:#FFF;
+	border:#346599 3px solid;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	padding:10px 5px;
+	
+}
+
+.recuadroAzulfotos{
+	background:#FFF;
+	border:#346599 3px solid;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	padding:10px 5px;
+	margin-bottom: 280px;
+}
+
+/* Recuadro Naranja con fondo Blanco*/
+.recuadroNaranja{
+	background:#FFF;
+	border:#CD6732 3px solid;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	padding:10px 5px;
+}
+
+.titulosFiltros{
+	font-weight:bold;
+	font-size:1.2em;
+}
+
+/* Recuadro Azul con fondo Blanco*/
+.contenedorInmuebles{
+	background:#FFF;
+	border:#989898 1px solid;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	padding:10px 5px;
+	margin-bottom:10px;
+}
+
+.titulosFiltroNaranja{
+	color:#CD6732;
+}
+
+.mostrarDatosInmueblesCampos{
+	float:left;
+	clear:left;
+	width:150px;
+	padding-right:8px;
+	font-weight:bold;
+	padding-bottom:5px;
+}
+.mostrarDatosInmueblesResultados{
+	padding-bottom:0px;
+	float:right;
+	margin-right:50px;
+}
+.mostrarDatosInmueblesResultadoscolizqui{
+    padding-bottom:0px;
+	float:right;
+	margin-right:130px;
+}
+.formulariodatos {
+	padding-bottom:0px;
+	float:right;
+	margin-right:100px;
+}
+/*------------------------- Links Los mas leidos Noticias y Decoracion--------------------------------------------*/
+a:link.lomasleido {color:#656565; display:inline-block; text-decoration:none; }
+a:visited.lomasleido {text-decoration:none;color:#656565;font-size: 12px;font-style: normal;}
+a:hover.lomasleido {text-decoration:none;font-weight:500;color:#154295;}
+a:active.lomasleido {text-decoration:none;color:#656565}
+/*------------------------- Links a productos desde la pagina categorias --------------------------------------------*/
+
+/*------------------------- Links Crear Cuenta y Olvido Clave --------------------------------------------*/
+a:link.colorazul {color:#336498; display:inline-block; text-decoration:none; }
+a:visited.colorazul {text-decoration:none;color:#336498;font-size: 12px;font-style: normal;}
+a:hover.colorazul {text-decoration:none;font-weight:500;color:#303;}
+a:active.colorazul {text-decoration:none;color:#336498}
+/*------------------------- Links a productos desde la pagina categorias --------------------------------------------*/
+
+.submit_searcher{
+	background: url(/imagenes/btmBuscar.png) no-repeat center center;
+width: 224px;
+height: 30px;
+border: 0;
+cursor: pointer;
+}
+
+
+
+

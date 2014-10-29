@@ -1,0 +1,29 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+span.navthis {
+	padding: 4px 6px 4px 6px;
+	font-weight: bold;
+	background:#E7F2C7;
+	border:#CCC 1px solid;
+}
+
+a.nav {	
+	text-decoration: none;
+	padding: 4px 6px 4px 6px;
+	margin: 2px;
+	border: 1px solid #00AB96;
+	color:#FFF;
+	background:#008474;
+	background: -webkit-gradient(linear, left top, left bottom, from(#008474), to(#00AB96));
+	background: -moz-linear-gradient(top,  #008474, #00AB96);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#008474', endColorstr='#00AB96');
+}
+a.nav:visited,
+a.nav:hover {
+	border: 1px solid #999;
+	color:#333;
+	background:#E7F2C7;
+
+} 

@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* contact */
+
+#CommentForm fieldset legend	{ display: none; }
+#CommentForm div 				{ margin-bottom: 1em; }		/* space between inputs */
+#CommentForm .textInput, 
+#CommentForm textarea			{ width: 325px; margin: 0; }	/* margins set by containers <div> */
+#CommentForm textarea 			{ height: 150px; }
+#CommentForm input.campo_rojo, #CommentForm textarea.campo_rojo { background-color: #ffc; border-color: #EF7E58; }
+#CommentForm label.campo_rojo {
+	display: block;
+	color: #f33;
+	font: bold 10px Verdana, Arial, Helvetica, Garuda, sans-serif;
+	line-height: 1em;		/* required for negative margins to work fully */
+	margin: 0.2em 0 -1.2em;	/* negative margins counter act error message space so input fields don't shift */
+}
+	/* Success message after sending contact form */
+	.proceso	{ border-top: 1px solid #ccc; font-weight: bold; margin: 25px 0; padding: 25px 0; }
+	/* Error message after sending contact form */
+	.campo_rojo		{ color: #f33; font-weight: bold; margin: 10px 0; }
+
+

@@ -1,0 +1,175 @@
+body {
+	background:url(../imagenes/fondo.png)
+}
+body, td, th, input, select, textarea, option, optgroup {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+}
+h1 {
+	text-transform: uppercase;
+	color: #CCCCCC;
+	text-align: right;
+	font-size: 24px;
+	font-weight: normal;
+	padding-bottom: 5px;
+	margin-top: 0px;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #CDDDDD;
+}
+.div1 {
+	width: 100%;
+	margin-bottom: 20px;
+}
+.div2 {
+	float: left;
+	display: inline-block;
+}
+.div3 {
+	float: right;
+	display: inline-block;
+	padding: 5px;
+}
+.heading td {
+	background: #E7EFEF;
+}
+.address, .product {
+	border-collapse: collapse;
+}
+.address {
+	width: 100%;
+	margin-bottom: 20px;
+	border-top: 1px solid #CDDDDD;
+	border-right: 1px solid #CDDDDD;
+}
+.address th, .address td {
+	border-left: 1px solid #CDDDDD;
+	border-bottom: 1px solid #CDDDDD;
+	padding: 5px;
+}
+.address td {
+	width: 50%;
+}
+.product {
+	width: 100%;
+	margin-bottom: 20px;
+	border-top: 1px solid #CDDDDD;
+	border-right: 1px solid #CDDDDD;
+}
+.product td {
+	border-left: 1px solid #CDDDDD;
+	border-bottom: 1px solid #CDDDDD;
+	padding: 5px;
+}
+.small {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+.mayuscula {
+	font-family: Arial, Helvetica, sans-serif;
+	text-transform: uppercase;
+	color: #000000;
+}
+.val_descuento {
+	font-family: Arial, Helvetica, sans-serif;
+	text-transform: uppercase;
+	color: #F00;
+	text-decoration: line-through;
+}
+
+/******* FORM *******/
+#form_contacto{
+	padding: 0 10px 10px;
+}
+#form_contacto label{
+	display: block;
+	color: #636363;
+	font-weight: 700;
+	line-height: 1.4em;
+}
+#form_contacto select{
+	width: 188px;
+	padding: 3px;
+	color: #949494;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
+	font-size: 11px;
+	border: 1px solid #cecece;
+}
+
+#form_contacto select.error{
+	background: #f8dbdb;
+	border-color: #e77776;
+}
+
+#form_contacto input{
+	width: 180px;
+	padding: 3px;
+	color: #949494;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
+	font-size: 11px;
+	border: 1px solid #cecece;
+}
+#form_contacto input.error{
+	background: #f8dbdb;
+	border-color: #e77776;
+}
+
+#form_contacto textarea{
+	width: 400px;
+	height: 80px;
+	padding: 3px;
+	color: #adaeae;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
+	font-style: italic;
+	font-size: 12px;
+	border: 1px solid #cecece;
+}
+#form_contacto textarea.error{
+	background: #f8dbdb;
+	border-color: #e77776;
+}
+#form_contacto div{
+	margin-bottom: 10px;
+}
+#form_contacto div span{
+	margin-left: 10px;
+	color: #b1b1b1;
+	font-size: 11px;
+	font-style: italic;
+}
+#form_contacto div span.error{
+	color: #e46c6e;
+}
+
+#form_contacto #send{
+	background:#E27616;
+	width:72px;
+	color: #FFFFFF;
+	font-weight: 500;
+	font-style: normal;
+	border: 0;
+	cursor: pointer;
+}
+
+#form_contacto #send:hover{
+	background: #666666;
+}
+#error{
+	margin-bottom: 20px;
+	border: 1px solid #efefef;
+}
+#error ul{
+	list-style: square;
+	padding: 5px;
+	font-size: 11px;
+}
+#error ul li{
+	list-style-position: inside;
+	line-height: 1.6em;
+}
+#error ul li strong{
+	color: #e46c6d;
+}
+#error.valid ul li strong{
+	color: #93d72e;
+}

@@ -1,0 +1,72 @@
+
+.buttons a {
+	margin-right: 30px;
+	width: 32px;
+	height: 32px;
+	display: inline-block;
+	position: relative;
+	line-height: 64px;
+	background-color: #F4872D;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#F4872D), to(#E86B04));
+	background-image: -webkit-linear-gradient(top, #F4872D, #E86B04);
+	background-image: -moz-linear-gradient(top, #F4872D, #E86B04); 
+	background-image: -ms-linear-gradient(top, #F4872D, #E86B04); 
+	background-image: -o-linear-gradient(top, #F4872D, #E86B04);
+	background-image: linear-gradient(top, #F4872D, #E86B04);
+	-moz-border-radius: 32px;
+	-webkit-border-radius: 32px;
+	border-radius: 32px;
+	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .25), 0 2px 3px rgba(0, 0, 0, .1);
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .25), 0 2px 3px rgba(0, 0, 0, .1);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .25), 0 2px 3px rgba(0, 0, 0, .1);
+}
+
+.buttons a:active {
+	top: 1px;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#E86B04), to(#F4872D));
+	background-image: -webkit-linear-gradient(top, #E86B04, #F4872D);
+	background-image: -moz-linear-gradient(top, #E86B04, #F4872D); 
+	background-image: -ms-linear-gradient(top, #E86B04, #F4872D); 
+	background-image: -o-linear-gradient(top, #E86B04, #F4872D);
+	background-image: linear-gradient(top, #E86B04, #F4872D);
+}
+
+.buttons a::before{
+		content: '';
+		position: absolute;
+		z-index: -1;
+		top: -8px;
+		right: -8px;
+		bottom: -8px;
+		left: -8px;
+		background-color: #E86B04;
+		-moz-border-radius: 140px;
+		-webkit-border-radius: 140px;
+		border-radius: 140px;
+	opacity: 0.5;		
+}
+
+.buttons a:active::before {
+	top: -9px;
+}
+
+.buttons a:hover::before { opacity: 1; }
+
+.buttons a.twitter:hover::before {
+	background-color: #2DAAE1;
+}
+
+.buttons a.facebook:hover::before {
+	background-color: #3C5B9B;
+}
+
+.buttons a.youtube:hover::before {
+	background-color: #FE3432;
+}
+
+
+.twitter img { vertical-align: -53px; }
+.youtube img { vertical-align: -53px; }
+.facebook img { vertical-align: -53px;}
+
+.buttons a img { border: 0; }

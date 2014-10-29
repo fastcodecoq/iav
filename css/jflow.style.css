@@ -1,0 +1,39 @@
+/*
+jFlow Demo CSS
+Description: Demo CSS for jFlow
+*/
+
+#sliderContainer { width: 648px; height: 300px; position: relative; margin: 0 auto; }
+
+.slideContent {  background:url("contentBg.png") repeat scroll 0 0 transparent; position: absolute; bottom:0px; right:0px;   padding: 0px;   width: 648px; }
+
+.slide h3 { color: #FFF;  margin: 0 0 10px 0; padding:5px; font-size:22px; }
+
+.slide p { font-size: 14px; color: #FFF; margin: 0; padding:5px; }
+
+.jFlowSlideContainer { overflow: hidden; }
+
+.jFlowSlideContainer a { color: #F90; text-decoration: none; font-style: italic; }
+
+.jFlowSlideContainer a:hover { text-decoration: none; }
+
+.jFlowSlideContainer a:focus { position: relative; top: 1px; }
+
+.jFlowNext { background: url("orbit/right-arrow.png") no-repeat scroll 0 0px transparent; height:100px; position:absolute; top:150px; right: 0px; width:78px; cursor:pointer; }
+
+.jFlowPrev { background:url("orbit/left-arrow.png") no-repeat scroll 0px 0px transparent; height:100px; position:absolute; top:150px; left: 0px; width:78px; cursor:pointer; }
+
+.jFlowPrev:hover { background-position: 0px -100px; }
+
+.jFlowNext:hover { background-position: 0px -100px; }
+
+
+/* controller pagination */
+
+#myController {position: absolute; top: 5px; right: 5px; }
+
+.jFlowControl { background: url(bullet.png) no-repeat scroll 0px 0px transparent;  float: left; width: 15px; height: 15px;}
+
+.jFlowControl:hover { background-position: -32px 0px; cursor: pointer; }
+
+.jFlowSelected, .jFlowSelected:hover {background-position: -15px 0px;   }
