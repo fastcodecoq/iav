@@ -45,12 +45,13 @@ require('bd.php');
         <div style="background:#FFF; float:left; width:760px; min-height:970px;">
         	<!-- Banner -->
         	<div style="padding:20px;">
-        	<table style="width:100%">
+        	<table style="width:95%; margin:0 auto">
         	 <tbody>
            		<?php
 				$consulta = "SELECT * FROM usuarios WHERE tipoUsuario = 3 AND banner1 != '' ORDER BY id DESC";	
 				$resultado = mysql_query($consulta, $conexion);	
 				$num_banners = mysql_num_rows($resultado);		
+				$count = 1;
 
 				echo "<tr> <td colspan='2'> <h2> {$num_banners}  Inmobiliarias encontradas.</h2> <br/><br/></td></tr>";
 
@@ -67,7 +68,7 @@ require('bd.php');
 					
 					?><tr style="padding:15px 0; border-top:1px solid #ccc">
 					<td style="width:70%">
-					 			<h3 style="color:#0089CE; padding:0; font-weight:bold; height:auto; margin:0"><a href="/propiedades_.php?inm=<?php echo $registro['identificacion']?>" ><?php echo $registro["nombreEmpresa"] ?></a></h3>
+					 			<h3 style="color:#0089CE; padding:0; font-weight:bold; height:auto; margin:0; margin-top:-60px"><a href="/propiedades_.php?inm=<?php echo $registro['identificacion']?>" ><?php echo $registro["nombreEmpresa"] ?></a></h3>
 					 			<br/>
 					 			<p style="font-size:14px; padding:0; margin:0">
 					 			 <?php 
@@ -104,10 +105,14 @@ require('bd.php');
 					
 					</tr>
 					<tr><td colspan="2">
+					<?php if($count < $num_banners){ ?>
 						<div style="border-top:1px dotted #ccc; display:block"></div>
 						<br>
+				   <?php } ?>
 					</td></tr>
                     <?php
+
+                    $count++;
 
 				}
 				
@@ -117,6 +122,7 @@ require('bd.php');
 				<div class="recuadroAzul" style="margin-bottom:20px" align="center"><img src="imagenes/constructora4.png" width="550" height="100" title="" /></div>	
               <?php
 				}
+
 				?>
 				 </tbody>
 				</table>
