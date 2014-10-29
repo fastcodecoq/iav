@@ -65,7 +65,7 @@ if(@$_SESSION["idusuario"] == ""){
     <div class="redes">
     <table>
     <tr>
-      <td><a href="<?php echo $link; ?>" class="boton-cool">Publicar Inmueble</a></td>
+      <td><a href="#" onclick="registrarinmueble()" class="boton-cool">Publicar Inmueble</a></td>
     </tr>
     <tr>
     <td>

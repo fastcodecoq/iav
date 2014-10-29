@@ -13,7 +13,7 @@ if(isset($_POST["codigo"]) && !empty($_POST["codigo"]))
 	$condicion = '';
 
 	$con = new MongoClient();
-	$db  = $con->iav;
+	$db  = $con->iav2;
 	$col = $db->inmuebles;
 	
 	if($estado == 1)

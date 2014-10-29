@@ -36,11 +36,39 @@ class migrate{
 	 }
 
 
+     public function num_pics($id){
+
+       $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+       $rs = $db->query("SELECT id FROM `fotos_inm` WHERE cod_inm = {$id}");
+       return $rs->num_rows;
+
+   }
+
+ 
+ public function fields_completed($data){
+  
+  $fields = 0;
+
+   foreach($data as $field)
+    if(!empty($field) AND $field != NULL)
+      if(is_numeric($field) )
+        if($field > 0)
+          $fields++;
+        else
+          $field++;
+
+    return $fields;
+
+ }
+
+
+
 	 protected function doo($rs){
 
 
 	 	$con = new MongoClient();
-	 	$to = $con->selectDB("iav");
+	 	$to = $con->selectDB("iav2");
 	 	$this->col = $to->inmuebles;	 	
 
 	 	foreach ($rs as $doc){
@@ -59,7 +87,10 @@ class migrate{
   	  	  $doc["campo_9"] = (int) $doc["campo_9"];
   	  	  $doc["campo_24"] = (int) $doc["campo_24"];
           $doc["campo_6"] = (int) $doc["campo_6"];
-  	  	  $doc["numvisitas"] = (int) $doc["numvisitas"];          
+  	  	  $doc["numvisitas"] = (int) $doc["numvisitas"];    
+          $doc["fields_completed"] = (int) $this->fields_completed($doc);
+          $doc["num_pics"] = (int) $this->num_pics($doc["codigo"]);
+          $doc["description_length"] = (int) $doc["description_length"];
 
          // $doc["campo_53"] = ($doc["campo_53"] < 0) ? ($doc["campo_53"] * -1) : $doc["campo_53"];
           // $doc["campo_5"] = ($doc["campo_5"] < 0) ? ($doc["campo_5"] * -1) : $doc["campo_5"];

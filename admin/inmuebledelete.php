@@ -13,6 +13,12 @@
 	// Eliminar fotos de la BD
 	$eliminar = "DELETE FROM fotos_inm WHERE cod_inm = ".(int)$_POST['id'];
 	mysql_query($eliminar);
+
+	$con = new MongoClient();
+	$db  = $con->iav2;
+	$col = $db->inmuebles;
+
+	$col->remove(array('id' => (int) $_POST['id']), array("justOne" => true));
 	
 	$sql = "DELETE FROM inmueble WHERE codigo = ".(int)$_POST['id'];
 	if(!mysql_query($sql))

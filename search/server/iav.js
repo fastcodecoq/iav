@@ -1,5 +1,5 @@
 var mongojs = require("mongojs");
-
+var extend = require("./jquery.js");
 
 //garage campo_17 , 
 //precio campo_53 arriendo 
@@ -11,7 +11,7 @@ var mongojs = require("mongojs");
 
 var iav = function(){
 
-	var db = mongojs("iav", ["inmuebles"]);
+	var db = mongojs("iav2", ["inmuebles"]);
 	
 	this.search = function(filters, callback, page, sort){
  	
@@ -21,6 +21,8 @@ var iav = function(){
 		   	   page = page -1;  
 		   	 filters.estado = "1";	
 		   var sort = sort || {};
+		    
+
 
 		    if(sort === "time>")
 		    	sort = {campo_4 : -1};
@@ -37,8 +39,9 @@ var iav = function(){
 		    if(sort === "area<")
 		    	sort = {campo_6 : 1};
 
-		    console.log(sort);
 
+		    extend(sort, {num_pics : -1, fields_completed: -1, description_length: -1});
+		    console.log(sort);
 
 		   if(filters.campo_6)
 		     switch(filters.campo_6){
@@ -120,7 +123,7 @@ var iav = function(){
 
 		   	db.inmuebles.find(filters).sort(sort).limit(limit).skip( (page * limit), function(err, docs){
 		   	  	
-		   	  	var docs = docs;
+		   	  	var docs = docs;		   	  	
 		   	  	var _filter = {};
 		   	  	_filter.numvisitas = { $gt : 20 };
 
