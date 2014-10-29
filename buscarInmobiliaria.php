@@ -103,7 +103,10 @@ require('bd.php');
 					<td>
 					
 					</tr>
-					<tr><td colspan="2"><hr /></td></tr>
+					<tr><td colspan="2">
+						<div style="border-top:1px dotted #ccc; display:block"></div>
+						<br>
+					</td></tr>
                     <?php
 
 				}
