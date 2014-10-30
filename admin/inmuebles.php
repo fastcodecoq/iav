@@ -82,7 +82,7 @@ function fn_eliminar(ide_per){
 			success: function(data){
 				if(data!="")
 					alert(data);
-				fn_buscar()
+				//fn_buscar()
 			}
 		});
 	}
@@ -100,7 +100,7 @@ function activar_inmueble(codigo,estado){
 		success: function(data){
 			if(data!="")
 				alert(data);
-			fn_buscar()
+			//fn_buscar()
 		}
 	});
 }
@@ -116,7 +116,7 @@ function fn_eliminarInmuebles(){
 				if(data != "")
 					alert(data);
 				fn_cerrar();
-				fn_buscar();
+			//	fn_buscar();
 			}
 		});
 	};

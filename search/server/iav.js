@@ -18,7 +18,7 @@ var iav = function(){
 		   var limit = limit || 15;
 		   var filters = filters || {};		   
 		   var page = page || 1;		   
-		   	   page = page -1;  
+		   	   page = page - 1;  
 		   	 filters.estado = "1";	
 		   var sort = sort || {};
 		    
@@ -134,7 +134,8 @@ var iav = function(){
 		   	  		_filter.tipo_neg = filters.tipo_neg;
 
 		   	  db.inmuebles.find( _filter ).limit(10, function(err, rs){
-		   	  	  callback(err, docs, total, rs);
+		   	  	console.log("page", page);
+		   	  	  callback(err, docs, total, rs, _filter.ciudad, page);
 		   	  });
 		   	     
 

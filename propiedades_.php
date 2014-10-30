@@ -24,6 +24,7 @@ require_once('bd.php');
 <link href="/css/paginacion_pagina.css" rel="stylesheet" type="text/css" />
 <link href="/css/botones.css" rel="stylesheet" type="text/css" />
 <link href="/css/nuevos-estilos.css" rel="stylesheet" type="text/css">
+<link href="/assets/css/simplePagination.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 
 <!-- Estilo de los campos de error-->
@@ -225,6 +226,24 @@ jQuery(document).ready(function() {
    	 color: green;
    	 font-weight: bold;
    }
+
+   .loader-wrap{
+       position: fixed;
+       left: 0;
+       top: 0;
+       width: 100%;
+       height: 100%;
+       display: none;
+       background: rgba(0,0,0,.1);
+
+   }
+
+   .loader{
+      margin: 200px auto;
+display: table;
+}
+   }
+
 </style>
     
 </head>
@@ -732,13 +751,14 @@ include('funciones/fechas.php');
         	  <br>
         	  
        
-            	<div data-pages>
+            	<div style="margin: 0 auto;
+display: table;" data-pages>
                  
                 </div>
             </form>
          
             </div>
-            <div style="float:left; margin-left:30px;overflow:hidden; background:#FFF; border: 1px solid #ccc; width:180px; min-height:211px;-moz-border-radius: 10px; -webkit-border-radius: 5px; border-radius: 5px;">
+            <div style="float:left; display:none;margin-left:30px;overflow:hidden; background:#FFF; border: 1px solid #ccc; width:180px; min-height:211px;-moz-border-radius: 10px; -webkit-border-radius: 5px; border-radius: 5px;">
         	<h1  style="padding-left:15px; font-size:12px"><img src="/imagenes/flecha.png" width="19" height="18" />Enlaces recomendados</h1>
 
             <hr style="border: 0; border-bottom: 1px dashed #F90;" size="1"></hr>
@@ -824,6 +844,7 @@ include('funciones/fechas.php');
 <script src="http://inmueblealaventa.com:9090/socket.io/socket.io.js"></script>
 <script src="assets/js/lazy.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/jquery.simplePagination.js"></script>
 
 <script type="text/javascript">
 
@@ -839,6 +860,13 @@ include('funciones/fechas.php');
   }) });
 
 </script>
+
+
+<div class="loader-wrap" id="loader">
+  <div class="loader">
+    <img src="assets/img/loader.gif" alt="" width="32">
+  </div>
+</div>
 
 </body>
 

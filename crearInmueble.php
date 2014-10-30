@@ -106,6 +106,7 @@ if($_POST['cod_temp'] != '' )
 	$barrio= $mongo["barrio"]  =$_POST['barrio'];
 	$codigoinm= $mongo["codigoinm"]  =$_POST['codigoinm'];
 	$mongo["estado"] = "1";
+	$dl = strlen($comentarioUsuario);
 	if($url_video != "")
 	{
 		//$url = explode("=",$url_video); 
@@ -121,10 +122,10 @@ if($_POST['cod_temp'] != '' )
 
 
 	$insercion = "INSERT INTO inmueble 
-	(usuario, codigo, tipo_neg, ciudad, tipo_inm, plan, dir, nomContacto, telContacto, celContacto, mailContacto, campo_1, campo_2, campo_3, campo_4, campo_5, campo_6, campo_7, campo_8, campo_9, campo_10, campo_11, campo_12, campo_13, campo_14, campo_15, campo_16, campo_17, campo_18, campo_19, campo_20, campo_21, campo_22, campo_23, campo_24, campo_25, campo_26, campo_27, campo_28, campo_29, campo_30, campo_31, campo_32, campo_33, campo_34, campo_35, campo_36, campo_37, campo_38, campo_39, campo_40, campo_41, campo_42, campo_43, campo_44, campo_45, campo_46, campo_47, campo_48, campo_49, campo_50, campo_51, campo_52, campo_53, comentarioUsuario, video, lat, lon, dirMapa, estado, destacado, textoDestacado, fecha_inscripcion,barrio,codigoinm) 
+	(usuario, codigo, tipo_neg, ciudad, tipo_inm, plan, dir, nomContacto, telContacto, celContacto, mailContacto, campo_1, campo_2, campo_3, campo_4, campo_5, campo_6, campo_7, campo_8, campo_9, campo_10, campo_11, campo_12, campo_13, campo_14, campo_15, campo_16, campo_17, campo_18, campo_19, campo_20, campo_21, campo_22, campo_23, campo_24, campo_25, campo_26, campo_27, campo_28, campo_29, campo_30, campo_31, campo_32, campo_33, campo_34, campo_35, campo_36, campo_37, campo_38, campo_39, campo_40, campo_41, campo_42, campo_43, campo_44, campo_45, campo_46, campo_47, campo_48, campo_49, campo_50, campo_51, campo_52, campo_53, comentarioUsuario, video, lat, lon, dirMapa, estado, destacado, textoDestacado, fecha_inscripcion,barrio,codigoinm, description_length) 
 	VALUES ('$usuario', '$codigo', $negociacion, $ciudad, $tipoInmueble, $plan, '$direccion', '$nomContacto', '$telContacto', '$celContacto', 
 	'$mailContacto', '$nomBarrio_1', '$tipoBodega_2', '$numOficinas_3', '$tiempo_4', '$vlrventa_5', '$area_6', '$estrato_7', '$tipoPiso_8', '$numBanos_9', '$puertaMulas_10', '$alarma_11', '$humo_12', '$gabinete_13', '$rociadores_14', '$tanques_15', '$planta_16', '$vigilancia_17', '$tipoConsultorio_18', '$vlrAdmon_19', '$parqVisitantes_20', '$numLineas_21', '$tipoFinca_22', '$tiempoArriendo_23', '$numHabitaciones_24', '$numGarajes_25', '$terrenoConstruido_26', '$piscina_27', '$canchaTenis_28', '$canchaFutbol_29', '$otrosDeportes_30', '$tipoLocal_31', '$cual_32', '$numDepositos_33', '$interior_34', '$numApartamento_35', '$numPiso_36', '$gas_37', '$numCasa_38', '$numPisos_39', '$tipoOficina_40', '$numOficina_41', '$tipoTecho_42', '$cocineta_43', '$numAscensores_44', '$escaleras_45', '$tipoLote_46', '$esquinero_47', '$ubicaLote_48', '$todoServicios_49', '$viaPrincipal_50', '$viaSecundaria_51', '$numBanosInter_52', '$canon_53', '$comentarioUsuario',
-	'$video', '$latitud', '$longitud', '$direccionMap', 0, 0, '$textoDestacado', NOW(),'$barrio','$codigoinm')";
+	'$video', '$latitud', '$longitud', '$direccionMap', 0, 0, '$textoDestacado', NOW(),'$barrio','$codigoinm', '$dl')";
 
 		
 		if (mysql_db_query($bd_nombre, $insercion))

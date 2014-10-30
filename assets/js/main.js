@@ -2,9 +2,11 @@
 		
      var iav = function(){
 
-     	 a.socket;
+     	   a.socket;
          var pageActive = 1;
-         var results;         
+         var results;          
+         var $loader = undefined;
+
          var types = [  
                null,            
               'Apartamento', 
@@ -49,6 +51,8 @@
 
         $("html, body").animate({scrollTop: results.offset().top - 100});          
           search();
+
+           $loader = $("#loader");
      }			
 
 
@@ -58,6 +62,7 @@
      	 var outs = "";
          var items = rs.total;
          var pages = Math.ceil(rs.total / 15);
+         var page = rs.page + 1;
          var links = rs.freq;
          var city = (rs.city) ? rs.docs[0].city : "Colombia";
          rs = rs.docs;
@@ -95,14 +100,10 @@
     	 	    
      	    } 
 
-            var pager = $("[data-pages]");                
-            var template_ = "<span><a href='#' data-page='{{page}}'>{{page}}</a></span>&nbsp;";
-            var out_ = "<span><a href='#' data-page='1' title='inicio'>&laquo;</a></span>&nbsp;";
-
+            var $pager = $("[data-pages]");                
+            
                    
-
-             $("[data-page]").removeClass("active");
-             $("[data-page='"+pageActive+"']").addClass("active");
+           
              $("[data-total]").html(items);
             
 
@@ -110,16 +111,24 @@
      	    {
                 results.html(outs);
 
-                pager.html("");
+                $pager.pagination('destroy');
                 $("[data-city]").html(city);
                 
-                if(pages > 0)
+                
+                if(pages > 1)
                 {
-                  for(i=1; i <= pages ; i++)                            
-                    out_ += template_.replace(/\{\{page\}\}/g, i);
-
-                out_ += "<span><a href='#' data-page='" + pages +"' title='fin'>&raquo;</a></span>";   
-                pager.html(out_);
+                  
+                  $pager.pagination({
+                    items: items,
+                    itemsOnPage: 15,
+                    cssStyle: 'compact-theme',
+                    onPageClick : page_controller,
+                    prevText : "Anterior",
+                    nextText : "Siguiente",
+                    currentPage : page,
+                    hrefTextPrefix : "#pagina-"                  
+                  });
+                
 
                 var link_tem = "<a href='{{short}}' style='display:block; width:80%; margin:0 auto; text-align:left' target='_blank'>{{text}}</a>";
                 var _links = "";
@@ -134,7 +143,7 @@
             else
             {
                 results.html("No se han encontraron resultados.");
-                pager.html("");                
+                $pager.html("");                
             }
 
              var location = new Array();
@@ -154,16 +163,16 @@
          }
 
         $("img.lazy").lazyload();      
-                        
+        $loader.hide();
+                                
 
      }
 
 
-     var page_controller = function(e){
-        e.preventDefault();
-        var page = parseInt($(this).attr("data-page"));     
-        var data = { filters : {} , page : page};
-        pageActive = page;       
+     var page_controller = function(number, e){
+        //e.preventDefault();        
+        var page = number;     
+        var data = { filters : window.filters , page : page};          
         search(data);
      }
 
@@ -171,15 +180,23 @@
      var listeners = function(){
 
         socket.on("search", search_controller);        
-        $("[data-page]").die("click").live("click", page_controller);  
+       // $("[data-page]").die("click").live("click", page_controller);  
 
      }
 
      var search = function(data){
-     	var data = data || {filters:{} , page : 1};
+     	  
+        if($loader)
+        $loader.show();
+
+        console.log($loader);
+
+        var data = data || {filters:{} , page : 1};
         var hash = document.location.hash;
         
-            if(hash.match(/\?/))
+        console.log(data);
+
+          /*  if(hash.match(/\?/))
                hash = hash.split("?")[0];
 
             data.filters = (hash) ? JSON.parse(hash
@@ -188,7 +205,7 @@
                                        .replace("[" , "{")
                                        .replace("]" , "}")
                                         ) : data.filters;
-
+*/
             console.log(data.filters);
 
         if(window.inmobiliaria)

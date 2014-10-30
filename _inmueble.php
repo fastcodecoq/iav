@@ -8,7 +8,7 @@ include('includes/parametros.php');
 $codigo = $_GET["cod"];
 
 
-if(preg_match("/\[[0-9]+\]/", $codigo, $match)) $codigo = preg_replace("/\[|\]/", "", $match[0]);
+if(preg_match("/\[[0-9]+\]/", $codigo, $match)){ $codigo = preg_replace("/\[|\]/", "", $match[0]); }
 
 
 
@@ -160,40 +160,40 @@ $url_short = file_get_contents($url, true);
 <meta property="fb:admins" content="100005082218469">
 <meta property="fb:app_id" content="1435079113381937">
 <meta property="og:url" content="">
-<meta property="og:title" content="<?php
+<meta property="og:title" content=<?php
 
                              if ($registro["tipo_inm"]==1 || $registro['tipo_inm']==2 || $registro['tipo_inm']==7)                                
 								  {	
-	                                 echo $registro['dest_tip']." con ". $registro["campo_24"]. " Habitaciones "." en ".tipo_negocio_imprimir_inm ($registro['tipo_neg'])." ".",". $registro['campo_6'].""."m&sup2"."- ID:".$registro["id"]." - ". Inmueblealaventa; 									                                  
+	                                 echo "'" .$registro['dest_tip']." con ". $registro["campo_24"]. " Habitaciones "." en ".tipo_negocio_imprimir_inm ($registro['tipo_neg'])." ".",". $registro['campo_6'].""."m&sup2"."- ID:".$registro["id"]." - ". Inmueblealaventa . "'"; 									                                  
                                   }				 							  
 						        else								  
 								  {								  
 							  if($registro['tipo_inm']==6  || $registro['tipo_inm']==8 || $registro['tipo_inm']==2 || $registro['tipo_inm']==3 || $registro['tipo_inm']==4 || $registro['tipo_inm']==5 )			 
 								  {
-									 echo $registro['dest_tip']." en ".tipo_negocio_imprimir_inm ($registro['tipo_neg'])." ".",". $registro['campo_6'].""."m&sup2"." - ID:".$registro["id"]." - ". Inmueblealaventa; 
+									 echo "'" . $registro['dest_tip']." en ".tipo_negocio_imprimir_inm ($registro['tipo_neg'])." ".",". $registro['campo_6'].""."m&sup2"." - ID:".$registro["id"]." - ". Inmueblealaventa . "'"; 
 								  }									 								
 								  
 								}								
-								?>">
-<meta property="og:description" content="<? echo $registro['dest_tip']?>,<?php echo $registro['dir']?>,<?php echo $nomciudad?>,<?php echo $nomdepto?>. Comuníquese con <?php echo $registro["nombreEmpresa"]?> para obtener toda la información sobre precios toda la información del inmueble codigo:<?php echo $codigo?>.">
+								?> >
+<meta property="og:description" content="<?php echo $registro['dest_tip']?>,<?php echo $registro['dir']?>,<?php echo $nomciudad?>,<?php echo $nomdepto?>. Comuníquese con <?php echo $registro["nombreEmpresa"]?> para obtener toda la información sobre precios toda la información del inmueble codigo:<?php echo $codigo?>.">
 <meta property="og:type" content="product">
 <meta property="og:image" content="<?php echo $foto1?>">
-<meta name="description" content="<? echo $registro['dest_tip']?>,<?php echo $registro['dir']?>,<?php echo $nomciudad?>,<?php echo $nomdepto?>. Comuníquese con <?php echo $registro["nombreEmpresa"]?> para obtener toda la información sobre precios y toda la información del inmueble codigo:<?php echo $codigo?>.">
-<meta name="keywords" content="<?php
+<meta name="description" content="<?php echo $registro['dest_tip']?>,<?php echo $registro['dir']?>,<?php echo $nomciudad?>,<?php echo $nomdepto?>. Comuníquese con <?php echo $registro["nombreEmpresa"]?> para obtener toda la información sobre precios y toda la información del inmueble codigo:<?php echo $codigo?>.">
+<meta name="keywords" content=<?php
 
                              if ($registro["tipo_inm"]==1 || $registro['tipo_inm']==2 || $registro['tipo_inm']==7)                                
 								  {	
-	                                 echo $registro['dest_tip']." con ". $registro["campo_24"]. " Habitaciones "." en ".tipo_negocio_imprimir_inm ($registro['tipo_neg'])." ".",". $registro['campo_6'].""."m&sup2"."- ID:".$registro["id"]." - {$url} "; 									                                  
+	                                 echo "'" . $registro['dest_tip']." con ". $registro["campo_24"]. " Habitaciones "." en ".tipo_negocio_imprimir_inm ($registro['tipo_neg'])." ".",". $registro['campo_6'].""."m&sup2"."- ID:".$registro["id"]." - {$url} " . "'"; 									                                  
                                   }				 							  
 						        else								  
 								  {								  
 							  if($registro['tipo_inm']==6  || $registro['tipo_inm']==8 || $registro['tipo_inm']==2 || $registro['tipo_inm']==3 || $registro['tipo_inm']==4 || $registro['tipo_inm']==5 )			 
 								  {
-									 echo $registro['dest_tip']." en ".tipo_negocio_imprimir_inm ($registro['tipo_neg'])." ".",". $registro['campo_6'].""."m&sup2"." - ID:".$registro["id"]." -  {$url}"; 
+									 echo "'" . $registro['dest_tip']." en ".tipo_negocio_imprimir_inm ($registro['tipo_neg'])." ".",". $registro['campo_6'].""."m&sup2"." - ID:".$registro["id"]." -  {$url}" . "'"; 
 								  }									 								
 								  
 								}								
-								?>">
+								?> >
 <meta name="viewport" content="width=device-width, initial-scale=0.75">
 <link href="/css/general.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="/css/nuevos-estilos.css"/>
@@ -421,11 +421,12 @@ a.thumbs {
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=675187122574747&version=v2.0";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-<?php include_once("analyticstracking.php") ?>
+
+<?php include_once("analyticstracking.php"); ?>
 <section>
-	<?php include('cabezote.php')?>
+	<?php include('cabezote.php'); ?>
     <div class="barraMenu">
-    	<div class="contenedor" align="left"><?php include('menu.php')?></div>
+    	<div class="contenedor" align="left"><?php include('menu.php'); ?></div>
     </div>
 </section>
 
@@ -433,9 +434,6 @@ a.thumbs {
 
 <div class="centrado">
 
-<?php
-
-?>
 
     <div class="lineatiempo"><h1><?php
 
@@ -505,7 +503,7 @@ a.thumbs {
 						$zona = ", zona " . $rs["nombrezona"];
 						 }
 						 else
-						 $zona = "";
+						{ $zona = ""; }
 
 					     $barr = (empty($barr)) ? $registro["campo_1"] : $barr;
 
@@ -552,7 +550,7 @@ a.thumbs {
                                 }else{ 
                                 $extension = explode(".", $registroFoto["foto"]);
                                 $nombre = $extension[0];
-                                $extension = $extension[sizeof($extension)-1];
+                                $extension = $extension[end($extension)];
                                 $foto = "";
                 
                                     switch ($extension)
@@ -635,7 +633,7 @@ a.thumbs {
             <div id="ytvideo2"></div>
             <ul class="demo2">
 			
-              <li class="currentvideo"><a href="<?php echo $registro["videoinm"]?>"><?php echo $registro["videoinm"]?></a></li>
+              <li class="currentvideo"><a href="<?php echo $registro["videoinm"]?>"><?php echo $registro["videoinm"]; ?></a></li>
 			
             </ul>
           </div>
@@ -652,7 +650,7 @@ a.thumbs {
    		<div>
    		<table style="width:77%">
    		 <tr>
-   		  <td><h3 style="margin-top:0">&nbsp;<strong  style="font-size:15px;color:#336498;"><?php echo $registro["numvisitas"]?> vistas</strong></h3>    	</td>
+   		  <td><h3 style="margin-top:0">&nbsp;<strong  style="font-size:15px;color:#336498;"><?php echo $registro["numvisitas"]; ?> vistas</strong></h3>    	</td>
    		  <td>
    		  <div style="float:right; display:block">
    		  	  <div class="fb-share-button" data-href="<?php echo $url; ?>"></div>
@@ -671,11 +669,11 @@ a.thumbs {
     <ul class="sub_col">
       <li>
         Tipo de inmueble:
-        <?php echo "<strong>".$registro['dest_tip']."</strong>"?>
+        <?php echo "<strong>".$registro['dest_tip']."</strong>"; ?>
       </li>
           <li class="half_col">
         Área :
-        <?php echo "<strong>".$registro["campo_6"]."m&sup2;</strong>"?>
+        <?php echo "<strong>".$registro["campo_6"]."m&sup2;</strong>"; ?>
       </li>  
       
    
@@ -684,7 +682,7 @@ a.thumbs {
        ?>
          <li class="half_col"> 
          Habitaciones:
-             <strong><?php echo $registro["campo_24"]?></strong>    
+             <strong><?php echo $registro["campo_24"]; ?></strong>    
          </li>
       <?php
 	  }
@@ -697,7 +695,7 @@ a.thumbs {
       ?> 
       <li class="half_col">
       Baños:
-      <strong><?php echo $registro["campo_9"]?></strong>
+      <strong><?php echo $registro["campo_9"]; ?></strong>
       </li>
       <?php
 	  }
@@ -709,7 +707,7 @@ a.thumbs {
 	  ?>
       <li class="half_col">
       Garajes:      
-      <strong class="shrink_font"><?php echo $registro["campo_25"]?></strong> 	
+      <strong class="shrink_font"><?php echo $registro["campo_25"]; ?></strong> 	
 	  </li>
 	   <?php
 	  }
@@ -720,7 +718,7 @@ a.thumbs {
 	  ?>      	
      <li class="half_col">
         Estrato:
-        <strong class="shrink_font"><?php echo $registro["campo_7"]?></strong>
+        <strong class="shrink_font"><?php echo $registro["campo_7"]; ?></strong>
       </li>
        <?php
 	  }
@@ -730,16 +728,15 @@ a.thumbs {
     <ul class="sub_col">
       <li>
         Ciudad:
-      <strong class="shrink_font"><?php echo $nomciudad?></strong>        
+      <strong class="shrink_font"><?php echo $nomciudad; ?></strong>        
       </li>
       
       
           <li>
            <?php
 		
-		if ($registro["campo_1"]== true)
-		
-		echo  "Barrio:"
+		if ($registro["campo_1"]== true)		
+		{echo  "Barrio:";}
 		
 		?>
           
@@ -1210,8 +1207,8 @@ while($registrotros= mysql_fetch_assoc($resultadootros))
                   </tr>
                   <tr id="oculto" style=" display:none">
                     <td align="center">                                                   
-            <?php echo $registro["telContacto"]?><br />
-            <?php echo $registro["celContacto"]?><br /><br />
+            <?php echo $registro["telContacto"]; ?><br />
+            <?php echo $registro["celContacto"]; ?><br /><br />
             <a href="#" onclick="ocultar()">Ocultar</a>
             </td>
                   </tr>
@@ -1337,9 +1334,9 @@ AND municipio.departamento_iddepartamento = departamento.iddepartamento and codi
                     <?php
 					}
 					?>
-                        <p><?php echo tipo_negocio_imprimir($registrodatos['tipo_neg'])." ".$registrodatos['dest_tip']?>,
+                        <p><?php echo tipo_negocio_imprimir($registrodatos['tipo_neg'])." ".$registrodatos['dest_tip']; ?>,
                         
-                        <?php echo $registrodatos['campo_6']?> m&sup2, <?php echo $registrodatos['campo_24']?> Habitaciones, <?php echo $registrodatos['campo_9']?> Baños, <?php echo $registrodatos['campo_17']?> Garajes, 
+                        <?php echo $registrodatos['campo_6']; ?> m&sup2, <?php echo $registrodatos['campo_24']?> Habitaciones, <?php echo $registrodatos['campo_9']?> Baños, <?php echo $registrodatos['campo_17']?> Garajes, 
                 <?php        
     				if($registrodatos['tipo_neg'] == 1)
 					{
@@ -1762,7 +1759,10 @@ AND municipio.departamento_iddepartamento = departamento.iddepartamento and codi
 </section>
 
 <footer>
-<?php include('pie.php')?>
+<?php include('pie.php'); ?>
+
 </footer>
+
 </body>
+
 </html>

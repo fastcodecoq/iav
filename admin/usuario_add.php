@@ -33,11 +33,13 @@ if(isset($_POST["hdd_accion"]) && $_POST["hdd_accion"] == "guardar")
 	$logo = "";
 	$banner = "";
 
+  $direccion = isset($_POST["direccion"]) ? $_POST["direccion"] : '';
+
 	if (! empty($_FILES["logo"]["name"])) { $logo = subir_archivo($_FILES["logo"]["name"], $_FILES["logo"]["tmp_name"], "../bannerInmobiliariaConstructora/"); }
 	
 	if (! empty($_FILES["banner"]["name"])){		$banner = subir_archivo($_FILES["banner"]["name"],  $_FILES["banner"]["tmp_name"], "../bannerInmobiliariaConstructora/");}
 	//INSERTO DATOS EN LA TABLA USUARIOS
-	$insercion = "INSERT INTO usuarios (nombres, apellidos, identificacion, telefono, celular, ciudad, tipoUsuario, nombreEmpresa, usuario, email, pass, rol, fechaCreacion, nInmuebles, banner1, banner2, url) VALUES ('$nombres', '$apellidos', $identificacion, '$telefono', '$celular', $ciudad, $tipo, '$nomempresa', '$usuario', '$email', '$password', $tipo, NOW(), $nInmuebles, '$logo', '$banner', '$url')";
+	$insercion = "INSERT INTO usuarios (nombres, apellidos, identificacion, telefono, celular, ciudad, tipoUsuario, nombreEmpresa, usuario, email, pass, rol, fechaCreacion, nInmuebles, banner1, banner2, url, direccion) VALUES ('$nombres', '$apellidos', $identificacion, '$telefono', '$celular', $ciudad, $tipo, '$nomempresa', '$usuario', '$email', '$password', $tipo, NOW(), $nInmuebles, '$logo', '$banner', '$url', '{$direccion}')";
 	$resultado = mysql_query($insercion);	
 	if ($resultado)
 	{
@@ -91,7 +93,7 @@ $(document).ready(function() {
    // This demo is for hidden elements in the form
 	$('#tipo').change(function(){
 	var value = $(this).val();
-	if (value == 3 || value == 4) $('#section_0').show(),$('#section_1').show(), $('#section_2').show(), $('#section_3').show();
+	if (value == 3 || value == 4) $('#section_0').show(),$('#section_1').show(), $('#section_2').show(), $('#section_3').show(),  $('#section_4').show();
 	else if(value != 3 || value != 4) $('#section_0').hide(),$('#section_1').hide(), $('#section_2').hide(), $('#section_3').hide();
 	else $('#campo_ocultos').children().hide();
 	});
@@ -236,6 +238,10 @@ $(document).ready(function() {
                         <div class="divCampo" id="section_0" style="display:none; padding:2px 0; border-bottom:#DDD 1px solid" align="left">
                             <label for="nInmuebles" style="padding-right:40px;"><strong>No. de Inmuebles</strong></label>
                             <input name="nInmuebles" type="text" id="lonInmueblesgo" size="30" value="0" />
+                        </div>
+                        <div class="divCampo" id="section_4" style="display:none; padding:2px 0; border-bottom:#DDD 1px solid" align="left">
+                            <label for="direccion" style="padding-right:40px;"><strong>Dirección</strong></label>
+                            <input name="direccion" type="text" id="direccion" size="30" placeholder="Ingrese la dirección" />
                         </div>
                         <div class="divCampo" id="section_1" style="display:none; padding:2px 0; border-bottom:#DDD 1px solid" align="left">
                             <label for="url" style="padding-right:40px;"><strong>URL</strong></label>

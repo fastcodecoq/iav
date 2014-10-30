@@ -30,8 +30,9 @@ io.sockets.on("connection", function(socket){
 
             console.log("sort", sort);
 
-    	     app.search(data.filters, function(rs, docs, total, freq,city){                    
-    	     	 socket.emit("search", {docs : docs, total : total, city : city, freq:freq});
+    	     app.search(data.filters, function(err, docs, total, freq,city, page){   
+           console.log("page", page);
+    	     	 socket.emit("search", {docs : docs, total : total, city : city, freq:freq, page : page});
     	     }, data.page, sort);
 
     });

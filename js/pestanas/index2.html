@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="es-ES">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Cómo crear un menú de pestañas elegante en jQuery</title>
+    <link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
+    <style>
+
+/******* NOTICIAS ********/
+.content.noticias h3{
+    background:transparent url(img/news.png) no-repeat scroll left top;
+}
+.content.noticias{
+    display:block;
+}
+/******** /NOTICIAS ********/
+
+/******** TUTORIALES ********/
+.content.tutoriales h3{
+    background:transparent url(img/tuts.png) no-repeat scroll left top;
+}
+.content.tutoriales{
+    display:none;
+}
+/******** /TUTORIALES ********/
+
+/******** ENLACES ********/
+.content.enlaces h3{
+    background:transparent url(img/links.png) no-repeat scroll left top;
+}
+.content.enlaces{
+    display:none;
+}
+.content.enlaces a{
+    color:#000;/** #498BBF color de la letra cuado menu cuando cambia carga**/
+}
+/******** /ENLACES ********/
+/******** PRUEBA ********/
+.content.prueba h3{
+    background:transparent url(img/links.png) no-repeat scroll left top;
+}
+.content.prueba{
+    display:none;
+}
+.content.prueba a{
+    color:#000;/** #498BBF color de la letra cuado menu cuando cambia carga**/
+}
+/******** /PRUEBA ********/
+
+	</style>
+    <!--[if IE]>
+        <link rel="stylesheet" href="ie.css" type="text/css" media="screen" />
+    <![endif]-->
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Cómo crear un menú de pestañas elegante en jQuery</h1>
+        <br />
+        <div class="aux">
+            <div id="container">
+                <ul class="menu">
+                    <li id="noticias" class="active">Noticias</li>
+                    <li id="tutoriales">Tutoriales</li>
+                    <li id="enlaces">Enlaces</li>
+                     <li id="prueba">Prueba</li>
+                </ul>
+                <span class="clear"></span>
+                <div class="content noticias">
+                   <table width="774" border="0" align="center" cellpadding="0" cellspacing="8">
+                    <tr>
+                      <td colspan="4" align="center" class="letra">      <p class="titulo">Incluya la sucursal de la empresa encargada de las fuentes fijas a registrar.</p>
+                        <p>&nbsp;</p></td>
+                    </tr>
+                    
+                    <tr>
+                      <td width="85" align="left" class="letra"><strong>Razón Social:*</strong></td>
+                      <td width="215" align="left" class="letra"><span class="letra">
+                        <input type="text" name="razon" id="razon"  />
+                      </span></td>
+                      <td width="105" align="left" class="letra"><strong>Departamento:*</strong></td>
+                      <td width="329" align="left"><div id="demoIzq" style="width:200px"><?php echo generaSelect($objeto,$base_datos); ?></div></td>
+                    </tr>
+                    <tr>
+                      <td align="left" class="letra"><strong>NIT:*</strong></td>
+                      <td align="left" class="letra"><input type="text" name="nit" id="nit" onkeypress="return validar(event)"/></td>
+                      <td align="left" class="letra"><strong>Municipio:*</strong></td>
+                      <td align="left"><select  name="select2" id="select2">
+                        <option value="0">Selecciona opci&oacute;n...</option>
+                      </select></td>
+                    </tr>
+                    <tr>
+                      <td align="left" class="letra"><strong>Dirección:*</strong></td>
+                      <td align="left" class="letra"><input type="text" name="dir" id="dir"  /></td>
+                      <td align="left" class="letra"><strong>Teléfonos:</strong></td>
+                      <td align="left"><input type="text" name="telefonos" id="telefonos" /></td>
+                    </tr>
+                    <tr>
+                      <td align="left" class="letra"><strong>e-mail:*</strong></td>
+                      <td align="left" class="letra"><input type="text" name="mail" id="mail" /></td>
+                      <td align="left" class="letra"><strong>e-mail (alternativo):</strong></td>
+                      <td align="left"><input type="text" name="mail2" id="mail2" /></td>
+                    </tr>
+                    <tr>
+                      <td align="left" class="letra"><strong>Expediente:</strong></td>
+                      <td align="left" class="letra"><input type="text" name="expediente" id="expediente" /></td>
+                      <td align="left" class="letra"><strong>Observaciones:</strong></td>
+                      <td align="left"><textarea name="observa" id="observa" cols="" rows=""></textarea></td>
+                    </tr>
+                    <tr>
+                      <td align="left" class="letra"><strong>Rep. Legal:*</strong></td>
+                      <td align="left" class="letra"><input type="text" name="repre" id="repre" /></td>
+                      <td align="left" class="letra"><strong>C.C:*</strong></td>
+                      <td align="left"><input type="text" name="ccrepre" id="ccrepre" /></td>
+                    </tr>
+                    <tr>
+                    </tr>
+                    <tr>
+                      <td height="26" colspan="4" align="center">&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="471" border="0" align="center">
+                    <tr>
+                      <td width="647" height="23">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td><?php if (isset($_POST['regempresa'])){ ?>
+                        <span class="letra">La empresa ha sido registrada de manera exitosa. <a href="empresa_registro_fuentes_2.php?ide=<?php echo $nit;?>">Registrar Fuentes Fijas</a></span>
+                      <?php } ?></td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="content tutoriales">
+                    <h3>Últimos Tutoriales</h3>
+                    <ul>
+                        <li><img src="img/bullet.png" alt="-" /> Cómo crear bordes redondeados en CSS3</li>
+                        <li><img src="img/bullet.png" alt="-" /> JSONP, llamadas entre dominios</li>
+                        <li><img src="img/bullet.png" alt="-" /> Introducción a Microsoft Silverlight</li>
+                        <li><img src="img/bullet.png" alt="-" /> Cómo aplicar sombra en textos con CSS3</li>
+                        <li><img src="img/bullet.png" alt="-" /> Creando capa de conexión abstracta a base de datos con PHP</li>
+                        <li><img src="img/bullet.png" alt="-" /> Mini Aplicaciones Web con Python y Juno</li>
+                    </ul>
+                </div>
+                <div class="content enlaces">
+                    <h3>Deberías Visitar...</h3>
+                    <ul>
+                        <li><img src="img/bullet.png" alt="-" /> <a href="http://www.plusmusica.com">www.plusmusica.com</a> - Online jukebox!</li>
+                        <li><img src="img/bullet.png" alt="-" /> <a href="http://www.cokidoo.com">www.cokidoo.com</a> - Nuestra startup! :)</li>
+                        <li><img src="img/bullet.png" alt="-" /> <a href="http://www.cokidoo.com">www.pixelartgames.com</a> - Te gustan los juegos pixel art? ;)</li>
+                        <li><img src="img/bullet.png" alt="-" /> <a href="http://www.dmsconsulting.es">www.dmsconsulting.es</a> - Anterior empresa</li>
+                    </ul>
+                </div>
+                <div class="content prueba">
+                    <h3>prueba</h3>
+                    <ul>
+                        <li><img src="img/bullet.png" alt="-" /> <a href="http://www.plusmusica.com">www.plusmusica.com</a> - Online jukebox!</li>
+                        <li><img src="img/bullet.png" alt="-" /> <a href="http://www.cokidoo.com">www.cokidoo.com</a> - Nuestra startup! :)</li>
+                        <li><img src="img/bullet.png" alt="-" /> <a href="http://www.cokidoo.com">www.pixelartgames.com</a> - Te gustan los juegos pixel art? ;)</li>
+                        <li><img src="img/bullet.png" alt="-" /> <a href="http://www.dmsconsulting.es">www.dmsconsulting.es</a> - Anterior empresa</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/tabs.js"></script>
+</body>
+</html>

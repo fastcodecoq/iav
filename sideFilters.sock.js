@@ -2,15 +2,29 @@
 // sidebar controller by gomosoft
 // dependences jQuery 1.7 >
 
+String.prototype.replaceLatinChar = function(){
+ return output = this.replace(/á|é|í|ó|ú|ñ|ä|ë|ï|ö|ü/ig,function (str,offset,s) {
+        var str =str=="á"?"a":str=="é"?"e":str=="í"?"i":str=="ó"?"o":str=="ú"?"u":str=="ñ"?"n":str;
+		   str =str=="Á"?"A":str=="É"?"E":str=="Í"?"I":str=="Ó"?"O":str=="Ú"?"U":str=="Ñ"?"N":str;
+		   str =str=="Á"?"A":str=="É"?"E":str=="Í"?"I":str=="Ó"?"O":str=="Ú"?"U":str=="Ñ"?"N":str;
+		   str =str=="ä"?"a":str=="ë"?"e":str=="ï"?"i":str=="ö"?"o":str=="ü"?"u":str;
+		   str =str=="Ä"?"A":str=="Ë"?"E":str=="Ï"?"I":str=="Ö"?"O":str=="Ü"?"U":str;
+        return (str);
+        })
+	
+}
+
 
 window.sideFilters = function(){
 		
-	  filters = {};
+	  window.filters = {};
 	  filterss = {};
-	var keys = {
+	  
+	  var keys = {
 		  1 : "venta",
 		 2 : "arriendo"
-	};
+	   };
+
 	  this.init = function(){
 
 	  	if(!$)
@@ -40,23 +54,37 @@ window.sideFilters = function(){
 
 	function radioController(){
 
-		
+		var dpto = undefined;
 
 
-		$("#filtros input[type='radio'], #barrio, #ciudad, #para, #tipoInmueble").die("change").live("change", function(){	
+		$("#filtros input[type='radio'], #departamento, #barrio, #ciudad, #para, #tipoInmueble").die("change").live("change", function(){	
 
 				var key = $(this).attr("name");
-				
+
+			
 
 				
 				filterss[key] = parseInt($(this).val());
 
-				if(key === "ciudad" || key === "barrio" || key === "para" || key === "tipoInmueble" )
+				if(key === "ciudad" || key === "barrio" || key === "para" || key === "tipoInmueble" || key === "departamento")
 				  {
 
 
 			
-                     var filters = filterss;
+                     filters = filterss;
+
+                     	if(dpto)
+					if(dpto != $("#departamento").val())
+					{
+						 $("#ciudad").val(0);					
+						 $("#tipoInmueble").val(0);
+						 $("#barrio").val(0);						 
+						 $("#zona").val(0);						 
+						 delete filters['ciudad'];
+						 delete filters['barrio'];
+						 delete filters['tipoInmueble'];
+					}
+				
 
                       if(filters.para)
                       {  
@@ -77,17 +105,42 @@ window.sideFilters = function(){
                          if(filters.barrio)
                          filters.barrio = filters.barrio + "" ;
 
-                            var url = "/properties#!" + JSON.stringify(filters)
-        							  .replace("{","[")
-        							  .replace("}","]");
+         		    if($("#departamento").val() != 0){
+         		    	   filters.dpto = parseInt($("#departamento").val());
+         		    }
+
+         		      $zona = $("#zona");
+
+                       var zona = $zona.val() != 0  && $zona.val() != "0" && $zona.val() != '' && $zona.val() != "undefined" && $zona.val() != undefined ? "/" + $("#zona option[value='" +  $("#zona").val() +"']").text().toLowerCase().replaceLatinChar().replace(/ /g,'') : ''; 
+                       var barrio = $("#barrio").val() != 0 ? '/' + $("#barrio option[value='" +  $("#barrio").val() +"']").text().toLowerCase().replaceLatinChar().replace(/ /g,'') : '';
+                       
+                       barrio = barrio.match('-escoja-') || barrio === '' ? undefined : barrio;
+
+                       var url = new Array();
+                           url.push(keys[filters.tipo_neg || 1]);
+                           url.push('/' + $("#departamento option[value='" +  $("#departamento").val() +"']").text().toLowerCase().replaceLatinChar().replace(/ |&nbsp;/g,'') || '');
+                           url.push('/' + $("#ciudad option[value='" +  $("#ciudad").val() +"']").text().toLowerCase().replaceLatinChar().replace(/ |&nbsp;/g,'') || '');
+                           url.push(zona || '');
+                           url.push(barrio || '');
+
+                        
+                        url = '/' + url.join('');
+                     
+                        console.log(url);
 
 						history.replaceState(null, url, url);
+                        
                         history.pushState(null, url, url);
 
+                        for(x in filters)
+                        	if(filters[x] === undefined || filters[x] === "undefined"  || !filters[x])
+                        		 delete filters[x];
+                        
+                        console.log(filters);
 
-      	                 socket.emit("search", {filters : filters , page : 1});
+      	                socket.emit("search", {filters : filters , page : 1});
 
-      	                
+      	                dpto = $("#departamento").val();
 
 				  }
 

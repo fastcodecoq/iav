@@ -63,6 +63,17 @@ class migrate{
  }
 
 
+ public function getDpto($ciudad){
+
+         $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+       $rs = $db->query("SELECT departamento_iddepartamento AS id FROM `municipio` WHERE idmunicipio = {$ciudad} LIMIT 1");
+       $rs = $rs->fetch_assoc();
+       return $rs["id"];
+
+ }
+
+
 
 	 protected function doo($rs){
 
@@ -91,9 +102,11 @@ class migrate{
           $doc["fields_completed"] = (int) $this->fields_completed($doc);
           $doc["num_pics"] = (int) $this->num_pics($doc["codigo"]);
           $doc["description_length"] = (int) $doc["description_length"];
+          $doc["dpto"] = (int) $this->getDpto((int) $doc["ciudad"]);
 
          // $doc["campo_53"] = ($doc["campo_53"] < 0) ? ($doc["campo_53"] * -1) : $doc["campo_53"];
           // $doc["campo_5"] = ($doc["campo_5"] < 0) ? ($doc["campo_5"] * -1) : $doc["campo_5"];
+
 
 
   	  	  if(isset($rss[0])){

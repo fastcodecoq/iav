@@ -10,6 +10,11 @@ if(@$_SESSION["idusuario"] == ""){
      $link = "/planes-venta";
 }
 
+if(isset($_SESSION["rol"]))
+ $publicar = $_SESSION["rol"] === "3" ? '/registroInmueble.php' : '/planes-venta';
+else
+  $publicar = '/planes-venta';
+
 ?>
 <div class="centrado">
 <div class="cabezote">
@@ -65,7 +70,17 @@ if(@$_SESSION["idusuario"] == ""){
     <div class="redes">
     <table>
     <tr>
-      <td><a href="#" onclick="registrarinmueble()" class="boton-cool">Publicar Inmueble</a></td>
+      <td>
+      <form action=<?php echo "'{$publicar}'"; ?> method="POST">
+        
+
+  <input type="hidden" name="hdd_tipo_neg" value="1">
+  <input type="hidden" name="hdd_plan" value="2">
+  <input type="hidden" name="cuenta.hdd_tipoCliente" value=<?php echo "'".$_SESSION["rol"]."'"; ?>>
+
+      <input style="width: 100%;" type="submit"  class="boton-cool" value="Publicar Inmueble" />
+      </form>
+      </td>
     </tr>
     <tr>
     <td>
