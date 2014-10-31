@@ -516,8 +516,7 @@ where usuarios.ciudad = municipio.idmunicipio and identificacion = ".$_SESSION['
 					}
                     if($cantidadInm > 0){
                         ?>
-                        <div style="overflow:hidden; padding: 10px 0 18px 0;; line-height:2">
-						<div style='float:right; padding-left:20px;'><a href='#' onclick='registrarinmueble()' class='boton azul small'>Agregar Inmueble</a></div>
+                        <div style="overflow:hidden; padding: 10px 0 18px 0;; line-height:2">						
                         <?php
                     }
 					?>
