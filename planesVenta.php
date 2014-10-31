@@ -30,6 +30,10 @@ include('includes/parametros.php');
 </section>
 
 <section>
+    <br>
+    <br>
+    <br>
+
 <?php 
 // Desactivar toda notificación de error
 error_reporting(0);
@@ -77,13 +81,18 @@ else
 o paquetes diferentes a nuestros planes
 llámenos <strong>PBX. 226 72 12</strong></div>
     </div>
+    <br>
+    <br>
+    <br>
   </div>
 
-<div style="clear:left; height:20px; margin-bottom:25px;"></div>
+<div style="clear:left; height:20px; margin-bottom:25px; display:block"></div>
+
+<footer style="display:block">
+<?php include('pie.php'); ?>
+</footer>
+
 
 </body>
-<footer>
-<?php include('pie.php')?>
-</footer>
 
 </html>

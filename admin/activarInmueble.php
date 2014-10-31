@@ -28,7 +28,10 @@ if(isset($_POST["codigo"]) && !empty($_POST["codigo"]))
 		if (!mysql_db_query($bd_nombre, $actualizar))
 			echo "Inmueble no actualizado:\n$actualizar";
 		else
-			$col->update($query , array('$set' => array("estado" => $estado)), array("upsert" => true));    
+			{
+				$col->update($query , array('$set' => array("estado" => $estado)), array("upsert" => true));    
+				echo "Inmueble actualizado";
+			}
 
 		exit;
 }

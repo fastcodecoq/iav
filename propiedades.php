@@ -1407,73 +1407,7 @@ include('funciones/fechas.php');
             </form>
          
             </div>
-            <div style="float:left; margin-left:30px;overflow:hidden; background:#FFF; border:#989898 1px solid; width:180px; min-height:211px;-moz-border-radius: 10px; -webkit-border-radius: 5px; border-radius: 5px;">
-        	<h1  style="padding-left:15px; font-size:12px"><img src="/imagenes/flecha.png" width="19" height="18" />Enlaces recomendados</h1>
-
-            <hr style="border: 0; border-bottom: 1px dashed #F90;" size="1">
-			<?php /*?><?php
-            $consulta = "SELECT * FROM noticias ORDER BY n_visitas DESC LIMIT 0,5";	
-            $resultado = mysql_query($consulta, $conexion); 
-			$numRegistros = mysql_num_rows($resultado);
-            while($registro= mysql_fetch_array($resultado))
-			{
-			?>
-            	<li style="padding-left: 12px; padding-bottom:4px; background: url(/imagenes/bullet_black.png) 0em 0.5em no-repeat;    margin-bottom: 1em; margin-left:-25px; border-bottom:#CCC 1px dotted; margin-right:15px;"><a href="noticia.php?not=<?php echo $registro["id"]?>" class="lomasleido"><?php echo $registro['titulo']?></a></li>
-            <?php
-            }
-			?><?php */?>
-           
-			<?php
-			
-			$ciudad = $_GET['ciudad'];
-			
-			if($ciudad != 0)
-			{
-				$condCiudad = " AND inmueble.ciudad = $ciudad";
-			}
-			else
-			{
-				$condCiudad = "";
-			}
-			
-			if ($_GET["para"]!=0)
-			{
-             $sql="SELECT tipo_in.dest_tip, municipio.nombreMunicipio, tipo_in.tip_inm, tipo_neg, departamento.nombre, inmueble . *
-				FROM inmueble, municipio, departamento, tipo_in
-				WHERE inmueble.estado =1
-				AND municipio.idmunicipio = inmueble.ciudad and tipo_neg=".$_GET["para"]."
-				AND municipio.departamento_iddepartamento = departamento.iddepartamento $condCiudad 
-				ORDER BY RAND( )
-				LIMIT 11 "; 
-			}
-			
-			else if ($_GET["tipoporye"]!=0)
-			{
-             $sql="SELECT tipo_in.dest_tip, municipio.nombreMunicipio, tipo_in.tip_inm, tipo_neg, departamento.nombre, inmueble . *
-				FROM inmueble, municipio, departamento, tipo_in
-				WHERE inmueble.estado =1
-				AND municipio.idmunicipio = inmueble.ciudad AND inmueble.campo_4 = ".$_GET["tipoporye"]."
-				AND municipio.departamento_iddepartamento = departamento.iddepartamento 
-				ORDER BY RAND( )
-				LIMIT 11 "; 
-			}
-			
-			
-$ejecuta=mysql_query($sql);
-while ($muestra=mysql_fetch_assoc($ejecuta))
-{
-	$tipoin="";
-	if($muestra['tipo_neg']==1){		$tipoin="Venta";	}
-	else if ($muestra['tipo_neg']==2){ 	$tipoin="Arriendo";	}
-	
- echo '<a href="/lo-mas-leido/'.$muestra['tipo_neg'].'/'.$muestra['tip_inm'].'/'.$muestra['ciudad'].'" style="color:#000;"" ><div  style="font-size:10px; margin-left:5px">'.$tipoin." ".$muestra['dest_tip']." ".$muestra['nombreMunicipio']."  &nbsp;".'</div></a><br />';
-
-}
-?>
-           
-           
-           
-            </div>
+            
          
             
              

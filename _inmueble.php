@@ -120,15 +120,15 @@ function obtenerURL() {
   $protocol = strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/") . $s;
   $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]);
   return $protocol . "://" . $_SERVER['SERVER_NAME'] . $port . $_SERVER['REQUEST_URI'];
-
+}
  
 function strleft($s1, $s2) {
   return substr($s1, 0, strpos($s1, $s2));
 }
 
 
-$url = obtenerURL();
-$url_short = file_get_contents($url, true);
+//$url = obtenerURL();
+//$url_short = file_get_contents($url, true);
 //$url_short = $url_short["shortUrl"];
 
 				?>
@@ -204,15 +204,57 @@ $url_short = file_get_contents($url, true);
 <script type="text/javascript" src="/js/emergente.js"></script>
 <script type="text/javascript" src="/js/pestanas/js/tabs.js"></script>
 <script type="text/javascript" src="/js/jquery.youtubeplaylist.js"></script>
+
 <script type="text/ecmascript">
+
+
+$.fn.serializeObject = function()
+{
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};
 
 
 		$(function() {
 			$("ul.demo1").ytplaylist();
 			$("ul.demo2").ytplaylist({addThumbs:true, autoPlay: false, holderId: 'ytvideo2'});
+			$("*[data-mail]").live("click", sendMail);
+			$("*[data-mostrar-tel]").live("click", function(e){ e.preventDefault(); mostrar(); });
+			$("*[data-ocultar-tel]").live("click", function(e){ e.preventDefault(); ocultar(); });
+			$fmail = $("form[name='send-mail']");
+
+			function sendMail(e){
+					
+				  e.preventDefault();				  
+
+				  $.ajax({ url : '/apps/mail/index.php', data : $fmail.serializeObject() , type : "POST"})
+				  .done(function(rs){ console.log(rs); 
+				  		alert(rs.response);
+				  		$fmail[0].reset();
+				  })
+				  .fail(function(err){console.log(err)});
+
+
+				  return false;
+
+					}
+
+
 		});
 		
-	
+
+
        $(document).ready(function(e) {
 		cargar_pestanas_inm();
 		
@@ -515,7 +557,9 @@ a.thumbs {
 					
                     
     <div class="inmueble">
-    
+    <table>
+   <tbody>
+   <td>
     <div  class="columna1">
         
         <div class="containerpesinmue">
@@ -1194,42 +1238,48 @@ while($registrotros= mysql_fetch_assoc($resultadootros))
             
     		</div>
     	</div><?php */?>
-        <div class="columna2">
+        
+</div>
+</td>
+<td style="position:relative">
+<div class="columna2" style="position:absolute; top:0">
         	<div class="formulario">
-                <form action="/process.php" method="post" >
+                <form name="send-mail" action="javascript:void(0)" method="post" >
                 <input type="hidden" name="txtemailcontac" id="txtemailcontac" value="<?php echo $registro["mailContacto"]?>">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td align="center"><p>Contactar al anunciante</p></td>
                   </tr>
                   <tr>
-                    <td align="center"><a href="#" onclick="mostrar()">Ver teléfono</a></td>                        
+                    <td align="center"><a href="#" data-mostrar-tel>Ver teléfono</a></td>                        
                   </tr>
                   <tr id="oculto" style=" display:none">
                     <td align="center">                                                   
             <?php echo $registro["telContacto"]; ?><br />
             <?php echo $registro["celContacto"]; ?><br /><br />
-            <a href="#" onclick="ocultar()">Ocultar</a>
+            <a href="#" data-ocultar-tel>Ocultar</a>
             </td>
                   </tr>
                   <tr>
                     <td align="center"><label for="txtnombre"></label>
-                    <input type="text" name="txtnombre" id="txtnombre" placeholder="Nombre"></td>
+                    <input type="text" name="txtnombre" id="txtnombre" placeholder="Ingrese su Nombre"></td>
                   </tr>
                   <tr>
                     <td align="center"><label for="txtcorreo"></label>
-                    <input type="text" name="txtcorreo" id="txtcorreo" placeholder="Correo electrónico"></td>
+                    <input type="text" name="txtcorreo" id="txtcorreo" placeholder="Ingrese su Correo electrónico"></td>
                   </tr>
                   <tr>
                     <td align="center"><label for="txttelefono"></label>
-                    <input type="text" name="txttelefono" id="txttelefono" placeholder="No. teléfonico"></td>
+                    <input type="text" name="txttelefono" id="txttelefono" placeholder="Ingrese un teléfono"></td>
                   </tr>
                   <tr>
                     <td align="center"><label for="txtcoment"></label>
-                    <textarea name="txtcoment" id="txtcoment" placeholder="Estoy interesado en recibir más información sobre este inmueble"></textarea></td>
+                    <textarea name="txtcoment" id="txtcoment" placeholder="Ingrese un mensaje para el anunciante"></textarea></td>
                   </tr>
                   <tr>
-                    <td align="center"><input type="image" name="imageField2" id="imageField2" src="/imagenes/enviar.png"></td>
+                    <td align="center">
+                    <input type="image" name="imageField2" id="imageField2" src="/imagenes/enviar.png" data-mail>
+                    </td>
                   </tr>
                   <tr>
                     <td align="center"><p class="peque">Al enviar este mensaje Ustede acepta los Términos de uso<br>
@@ -1378,7 +1428,11 @@ AND municipio.departamento_iddepartamento = departamento.iddepartamento and codi
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
-</div>
+
+</td>
+</tr>
+</tbody>
+</table>
             
                     <?php /*?><?php
 		$consulta_banner="SELECT * FROM banner WHERE posicion = 1 AND estado = 1 ORDER BY fecha DESC limit 0,1"; 
@@ -1739,22 +1793,10 @@ AND municipio.departamento_iddepartamento = departamento.iddepartamento and codi
 <?php /*?><script type="text/javascript" src="fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
 <script type="text/javascript" src="fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 <link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox-1.3.4.css" media="screen" /><?php */?>
-<script type="text/javascript">
-/*$(document).ready(function() {
-	$("a#mail").fancybox({
-		'padding'		: 0,
-		'autoDimensions': false,
-		'centerOnScroll' : true,
-		'overlayOpacity' : 0.1,
-		'hideOnOverlayClick' : false,
-        'height': 360,
-       	'width': 350,
-		'transitionIn'	: 'elastic',
-		'transitionOut'	: 'elastic',
-		'type' : 'iframe'
-	});
-});*/
-</script> 
+
+<br>
+<br>
+<br>
 
 </section>
 

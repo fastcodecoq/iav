@@ -57,6 +57,11 @@ $(document).ready(function() {
 
 <section>
   <div style="clear:left; padding-top:10px;" class="contenedor">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
     	<!-- Registro -->
         <form action="/form_enviar_registro.php" method="post" id="registro">
         <div class="recuadroAzul">
@@ -212,10 +217,14 @@ $(document).ready(function() {
         </form>
         <!-- Registro -->
   </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  
 </section>
 
-<section>
-</section>
 
 <footer>
 <?php include('pie.php')?>

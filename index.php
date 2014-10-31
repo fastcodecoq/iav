@@ -1293,6 +1293,9 @@ while ($muestra7=mysql_fetch_assoc($ejecuta7))
         
     </div>
 </section>
+<br>
+<br>
+<br>
 </div>
 
 
