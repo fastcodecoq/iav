@@ -167,19 +167,19 @@ if($fechaDesactivacion != ''){
 if($registro["estado"] == 0)
 {
 	?>
-	<a href="#" onclick="activar_inmueble(<?php echo $registro["codigo"]?>, 1)"><img src="imagenes/inactivo.png" width="22" height="22" border="0" /></a>
+	<a href="#" data-codigo="<?php echo $registro["codigo"]?>" data-estado="1" data-activar><img src="imagenes/inactivo.png" width="22" height="22" border="0" /></a>
     <?php
 }
 else if($registro["estado"] == 1)
 {
 ?>
-<a href="#" onclick="activar_inmueble(<?php echo $registro["codigo"]?>, 0)"><img src="imagenes/activo.png" width="22" height="22" border="0" /></a>
+<a href="#" data-codigo="<?php echo $registro["codigo"]?>" data-estado="0" data-activar><img src="imagenes/activo.png" width="22" height="22" border="0" /></a>
 <?php
 }
 ?>
 </td>
 <!--<td class="center"><img src="imagenes/edit.png" width="17" height="18" border="0" /></td>-->
-<td class="center"><a href="javascript: fn_eliminar(<?php echo $registro['codigo']?>)"><img src="imagenes/delete.gif" width="18" height="18" border="0" /></a></td>
+<td class="center"><a href="#" data-codigo=<?php echo "'{$registro['codigo']}'"; ?> data-eliminar><img src="imagenes/delete.gif" width="18" height="18" border="0" /></a></td>
 </tr>
 <?
 }

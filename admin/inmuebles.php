@@ -19,6 +19,7 @@ include_once("includes/parametros.php");
 <link href="../css/PHPPaging.lib.css" rel="stylesheet" type="text/css" />
 
 <script>
+
 $(document).ready(function(){
 	fn_buscar();
  /*gomosoft*/ 
@@ -30,6 +31,11 @@ $(document).ready(function(){
 		$(this).removeClass("over");
 	});
 
+
+   $("*[data-activar]").live("click", activar_inmueble);
+   $("*[data-eliminar]").live("click", fn_eliminar);
+
+   $loader = $("#cargando");
 
 });
 
@@ -72,9 +78,13 @@ function fn_buscar(e){
 }
 
 
-function fn_eliminar(ide_per){
+function fn_eliminar(e){
+
+  e.preventDefault();  
+  var $this = $(this);
 	var respuesta = confirm("Desea eliminar este inmueble?");
 	if (respuesta){
+    $loader.show();
 		$.ajax({
 			url: 'inmuebledelete.php',
 			data: 'id=' + ide_per,
@@ -82,31 +92,63 @@ function fn_eliminar(ide_per){
 			success: function(data){
 				if(data!="")
 					alert(data);
+        $this.parents("tr:first").remove();
+        $loader.hide();
 				//fn_buscar()
 			}
 		});
-	}
+	}  
 }
 
-function activar_inmueble(codigo,estado){
+function activar_inmueble(e){      
+
+   e.preventDefault();
+
+   $loader.show();  
+
+   var $this = $(this);
+
+
+   var codigo = $this.attr("data-codigo");
+   var estado = $this.attr("data-estado");
+
 	var parametros = {
                 codigo : codigo,
                 estado : estado
     };
+
+    console.log($this);
+
 	$.ajax({
 		url: 'activarInmueble.php',
 		data: parametros,
 		type: 'post',
 		success: function(data){
+      console.log("data",data);
 			if(data!="")
-				alert(data);
+			{
+        console.log(estado);
+        if(estado === "1")
+          {
+            $this.find("img").attr("src", "imagenes/activo.png");
+            $this.attr("data-estado", "0");
+          }
+        else
+          {
+            $this.find("img").attr("src", "imagenes/inactivo.png");
+            $this.attr("data-estado", "1");
+          }
+
+      }
+$loader.hide();
+
 			//fn_buscar()
 		}
 	});
 }
 
 
-function fn_eliminarInmuebles(){
+function fn_eliminarInmuebles(e){
 		var str = $("#frm_inmu").serialize();
 		$.ajax({
 			url: 'inmueblesdelete.php',
@@ -120,6 +162,8 @@ function fn_eliminarInmuebles(){
 			}
 		});
 	};
+
+
 
 
   
